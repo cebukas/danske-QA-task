@@ -1,15 +1,16 @@
 import MainPage from '../pages/MainPage';
 
 describe('Search Functionality', () => {
+  let mainPage;
+
+  beforeEach(() => {
+    mainPage = new MainPage();
+  });
 
   it('should display expected jobs for a valid search query with all possible fields', () => {
-    cy.fixture('searchDataSets').then((testdata) => {
-      for (const data of Object.values(testdata)) {
-
-        const mainPage = new MainPage();
-
+    cy.fixture('searchDataSets').then((searchData) => {
+      for (const data of Object.values(searchData)) {
         mainPage.visit();
-
         mainPage.selectJobArea(data.jobAreas);
         mainPage.selectSeniority(data.seniorities);
         mainPage.selectEnglishLevel(data.englishLevels);
@@ -20,14 +21,11 @@ describe('Search Functionality', () => {
       }
     });
   })
+
   it('should retain search results after navigating', () => {
-    cy.fixture('searchDataSets').then((testdata) => {
-      const data = Object.values(testdata)[0];
-
-      const mainPage = new MainPage();
-
+    cy.fixture('searchDataSets').then((searchData) => {
+      const data = Object.values(searchData)[0];
       mainPage.visit();
-
       mainPage.selectJobArea(data.jobAreas);
       mainPage.selectSeniority(data.seniorities);
       mainPage.selectEnglishLevel(data.englishLevels);
@@ -42,11 +40,9 @@ describe('Search Functionality', () => {
   })
 
   it('should return jobs that have the entered keyword in the title (case insensitive)', () => {
-    cy.fixture('searchValues').then((testData) => {
-      for (const data of Object.values(testData)) {
-        const mainPage = new MainPage();
+    cy.fixture('searchValues').then((searchData) => {
+      for (const data of Object.values(searchData)) {
         mainPage.visit();
-
         mainPage.search(data.searchValue);
 
         mainPage.validateJobTitlesToContainCaseInsensitiveString(data.searchValue);

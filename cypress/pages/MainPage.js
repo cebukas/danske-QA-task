@@ -17,9 +17,11 @@ class MainPage {
     visit() {
         cy.visit('/');
     }
+
     navigateToGetToKnowUs() {
         this.webElements.getToKnowUs().click();
     }
+    
     navigateBack() {
         this.webElements.backSpan().click();
     }
@@ -37,7 +39,7 @@ class MainPage {
     }
 
     search(valueToSearch) {
-        this.webElements.searchInput().type(valueToSearch + "{enter}");
+        this.webElements.searchInput().clear().type(valueToSearch + "{enter}");
     }
 
     #selectDropdownValues(dropdownToClick, valuesToSelect) {
@@ -60,6 +62,7 @@ class MainPage {
     validateLength(expectedLength) {
         this.webElements.jobBlocks().should('have.length', expectedLength);
     }
+
     validateJobTitles(expectedTitles) {
         this.webElements.jobTitles().each(($dropdownElement) => {
             cy.wrap($dropdownElement) // wrap this element to use cypress commands on it
@@ -67,10 +70,12 @@ class MainPage {
                 .should('be.oneOf', expectedTitles);
         });
     }
+
     validateJobTitlesToContainCaseInsensitiveString(value) {
         this.webElements.jobTitles().each(($dropdownElement) => {
             expect($dropdownElement.text().toLowerCase()).to.contain(value.toLowerCase());
         });
     }
+
 }
 export default MainPage;
