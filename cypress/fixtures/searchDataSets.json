@@ -1,0 +1,35 @@
+{
+  "dataset1": {
+    "jobAreas": [
+      "IT Engineering",
+      "Risk management"
+    ],
+    "seniorities": [
+      "Chief"
+    ],
+    "englishLevels": [
+      "Advanced",
+      "Intermediate"
+    ],
+    "keywords": ".net",
+    "results": [
+      "Chief .Net Software Engineer at OCE Trade Mapping Squad"
+    ]
+  },
+  "dataset2": {
+    "jobAreas": [
+      "IT Engineering"
+    ],
+    "seniorities": [
+      "Chief"
+    ],
+    "englishLevels": [
+      "Advanced"
+    ],
+    "keywords": " ",
+    "results": [
+      "Chief .Net Software Engineer at OCE Trade Mapping Squad",
+      "Chief Process Expert in Anti-FinCrime Lifecycle Management"
+    ]
+  }
+}
